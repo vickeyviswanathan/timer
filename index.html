@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a0b2e">
+    <title>Glide Brands — Event Timer &amp; Buzzer</title>
+    <!-- 100% OFFLINE: zero CDN / internet dependencies -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="flash-overlay" class="flash-overlay" aria-hidden="true"></div>
+
+    <div class="app">
+        <!-- ============ TOP HEADER ============ -->
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-logo"><img src="assets/logo.png" alt="glide BRANDS"></div>
+                <div class="brand-titles">
+                    <h1 class="board-title">GAME TIMER</h1>
+                    <p class="board-subtitle">Family Day</p>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button id="buzzer-btn" class="pill-btn pill-buzzer" title="Sound Buzzer Now (B)">
+                    <span>🚨</span> <span class="btn-label">Buzzer</span>
+                </button>
+                <button id="sound-toggle" class="icon-btn" title="Sound effects on/off" aria-pressed="true">🔊</button>
+                <button id="fullscreen-toggle" class="icon-btn" title="Full Screen (F)">⛶</button>
+            </div>
+        </header>
+
+        <!-- ============ CENTER GIANT TIMER STAGE ============ -->
+        <main class="main">
+            <div id="timer-card" class="timer-card card" data-state="idle">
+                <div class="ring-wrap">
+                    <svg class="progress-ring" viewBox="0 0 320 320" aria-hidden="true">
+                        <circle class="ring-bg" cx="160" cy="160" r="144"></circle>
+                        <circle id="ring-fill" class="ring-fill" cx="160" cy="160" r="144"></circle>
+                    </svg>
+
+                    <div class="clock-center">
+                        <span id="status-badge" class="status-badge">READY</span>
+                        <div id="time-display" class="time-display" aria-live="polite">01:00</div>
+                        <span id="total-label" class="total-label">1 Minute Round</span>
+                    </div>
+                </div>
+
+                <!-- Primary Playback Controls -->
+                <div class="main-controls">
+                    <button id="minus-15-btn" class="ctrl-btn ctrl-adj" title="Subtract 15 seconds">-15s</button>
+                    <button id="start-pause-btn" class="ctrl-btn ctrl-primary">▶ START</button>
+                    <button id="reset-btn" class="ctrl-btn ctrl-secondary" title="Reset Timer (R)">🔄 RESET</button>
+                    <button id="plus-15-btn" class="ctrl-btn ctrl-adj" title="Add 15 seconds">+15s</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- ============ ULTRA-LOW BOTTOM PRESET & CUSTOM DOCK ============ -->
+        <footer class="bottom-dock">
+            <div class="preset-group" role="group" aria-label="Timer Presets">
+                <span class="dock-label">Presets:</span>
+                <button type="button" class="preset-btn" data-seconds="30">30 Sec</button>
+                <button type="button" class="preset-btn active" data-seconds="60">1 Min</button>
+                <button type="button" class="preset-btn" data-seconds="120">2 Min</button>
+                <button type="button" class="preset-btn" data-seconds="180">3 Min</button>
+                <button type="button" class="preset-btn" data-seconds="300">5 Min</button>
+            </div>
+
+            <form id="custom-form" class="custom-form" autocomplete="off">
+                <span class="dock-label">Custom:</span>
+                <input id="custom-min" type="number" min="0" max="99" placeholder="Min" class="dock-input mono" aria-label="Minutes" value="0">
+                <span class="colon">:</span>
+                <input id="custom-sec" type="number" min="0" max="59" placeholder="Sec" class="dock-input mono" aria-label="Seconds" value="45">
+                <button type="submit" class="dock-set-btn">Set Time</button>
+            </form>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
